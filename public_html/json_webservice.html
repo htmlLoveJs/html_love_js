@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+            
+            var myUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Gresik,ID&appid=e658e3869a7bb532ff82f40d67060e69';
+
+
+
+//fungsi yang pertama kali dijalankan
+//function Fetch () {   
+ // mengambil data json dari url   
+// $.getJSON(myUrl, function(data){        
+//menampilkan popup data ketika dicoba di simulator        
+//alert(JSON.stringify(data));        
+//menampilkan data di console       
+ //console.log(data);  
+// });
+//}
+
+//fungsi yang pertama kali dijalankan
+function fetch () {   
+ // mengambil data json dari url   
+ $.getJSON(myUrl, function(data){        
+//menampilkan popup data ketika dicoba di simulator        
+alert(JSON.stringify(data));        
+//menampilkan data di console       
+ console.log(data);  
+ });
+};
+
+// untuk menjalankan fungsi pertama kali yatu fungsi fetch
+// mengecek apakah jalan di cordova atau tidak untuk menjalankan fungsi fetch
+if (window.cordova) {  
+  document.addEventListener("deviceready", fetch, false);
+} else {    
+window.onload = fetch;
+}
+
+//Menerjemahkan dari Bahasa Inggris ke Bahasa Indonesia
+function translateEnToId(text){   
+ switch(text){        
+case 'Clear':            
+return 'Cerah';            
+break;        
+case 'Rain':            
+return 'Hujan';            
+break;        
+default:            
+return text;            
+break;   
+ }
+}
+
+//fungsi untuk menampilkan data
+function display (json) {
+    //menerjemahkan ke bahasa indonesia    
+//var cuaca = translateEnToId(json.weather[0].main);
+
+    //memasukkan data json ke variable    
+var mylocation ='<h2><b>Kota '+json.name+' Hari Ini</b></h2>' ;    
+var myicon = '<img width=150 src="http://openweathermap.org/img/w/'+json.weather[0].icon+'.png"> ';    
+var mycuaca = '<h3><b>Cuaca  '+cuaca+'</b></h3>' ;    
+var mysuhu= 'Suhu: '+json.main.temp_min+' - '+json.main.temp_max+' deg';    
+var mykelembapan= 'Kelembapan: '+json.main.humidity+'%';
+
+    //menampilkan variable ke index.html    
+$('#showLocation').html(mylocation);    
+$('#showIcon').html(myicon);    
+$('#showCuaca').html(mycuaca);   
+ $('#showSuhu').html(mysuhu);    
+$('#showKelembapan').html(mykelembapan);
+}
+
+
+
+
+
+
+
+
+        </script>
+        
+    </head>
+    <body>
+        <div id="showLocation"></div>
+        <div id="showIcon"></div>
+        <div id="showCuaca"></div>
+        <div id="showSuhu"></div>
+        <div id="showKelembapan"></div>
+    </body>
+</html>

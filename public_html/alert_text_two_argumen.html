@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function MyFunc(nama, umur)
+            {
+                var i = "";
+                var x = "";
+                
+                nama = document.getElementById("nama").value ;
+                 umur = document.getElementById("umur").value ;
+                
+                alert("nama kamu "+nama+ " umur kamu "+umur);
+        
+        //alert("nama kamu adalah "+nama+ " Umur Kamu "+umur);
+            }
+        </script>
+    </head>
+    <body>
+        <p>nama</p> <input type="text" id="nama" value=""><br>
+        <p>umur</p><input type="text" id="umur" value=""><br>
+        
+        <button onclick="MyFunc(nama,umur)">click me</button>
+    </body>
+</html>
